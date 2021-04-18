@@ -92,6 +92,6 @@ function tick() {
 }
 
 function interval(progress) {
-	const level = Math.floor(progress / 15);
+	const level = Math.floor(progress / 20);
 	return [1500, 1300, 1100, 900, 800, 700, 600, 550][level] || 500;
 }

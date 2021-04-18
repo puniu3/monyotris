@@ -34,10 +34,32 @@ canvas {
 	user-select: none;
 }
 
-#left{
-	padding-right: 0.5vh;
+.triangle{
+	width: 0;
+	height: 0;
+	border-left: 2vh solid transparent;
+	border-right: 2vh solid transparent;
+	border-bottom: 3vh solid #999;
 }
 
-#right{
-	padding-left: 1vh;
+.triangle.left{
+	margin-right: 0.5vh;
+	transform: rotate(-90deg);
+}
+
+.triangle.right{
+	margin-left: 0.5vh;
+	transform: rotate(90deg);
+}
+
+.triangle.down{
+	margin-top: 0.5vh;
+	transform: rotate(180deg);
+}
+
+.diamond{
+	width: 3vh;
+	height: 3vh;
+	background: #999;
+	transform: rotate(45deg);
 }
