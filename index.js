@@ -2,18 +2,24 @@ import draw from "/draw.js";
 import core from "/core.js";
 import noise from "/noise.js";
 
-let mtx = core.blank();
-let mino = core.rndMino();
-let score = 0;
-let totalMinos = 0;
-let running = true;
+let mtx, mino, score, totalMinos, running;
 
 window.addEventListener("keydown", onKeydown);
-window.addEventListener("load", tick);
+window.addEventListener("load", reset);
 document.querySelector("#down").addEventListener("mousedown", () => handleInput("d"));
 document.querySelector("#up").addEventListener("mousedown", () => handleInput("u"));
 document.querySelector("#left").addEventListener("mousedown", () => handleInput("l"));
 document.querySelector("#right").addEventListener("mousedown", () => handleInput("r"));
+
+function reset() {
+	window.removeEventListener("mousedown", reset);
+	mtx = core.blank();
+	mino = core.rndMino();
+	score = 0;
+	totalMinos = 0;
+	running = true;
+	tick();
+}
 
 function update() { draw(core.turncate(core.lap(mtx, mino) || mtx), score); }
 
@@ -60,8 +66,10 @@ function land() {
 		noise();
 	}
 
-	if (core.isDead(mtx))
+	if (core.isDead(mtx)) {
 		running = false;
+		window.addEventListener("mousedown", reset);
+	}
 	else {
 		mino = core.rndMino();
 		++totalMinos;

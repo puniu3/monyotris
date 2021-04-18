@@ -15,6 +15,7 @@ const draw = (mtx, score = 0) => {
 			ctx.fillRect(x * SCALE, y * SCALE, SCALE, SCALE);
 		})
 	});
+
 	if (score === 0) return;
 	ctx.fillStyle = "white";
 	ctx.font = "40px 'Courier New', Courier, monospace";

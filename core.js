@@ -54,7 +54,7 @@ const rndMino = () => {
 	const type = rnd(MINOS.length);
 	const width = MINOS[type][0][0].length;
 	const x = rnd(COLS - width + 1) + EDGE;
-	return { type, x, y: 0, rot: 0 };
+	return { type, x, y: 1, rot: 0 };
 };
 
 const clear = mtx => {
