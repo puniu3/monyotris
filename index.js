@@ -13,6 +13,7 @@ document.querySelector("#right").addEventListener("mousedown", () => handleInput
 
 function reset() {
 	window.removeEventListener("mousedown", reset);
+	window.removeEventListener("keydown", reset);
 	mtx = core.blank();
 	mino = core.rndMino();
 	score = 0;
@@ -70,6 +71,7 @@ function land() {
 	if (core.isDead(mtx)) {
 		running = false;
 		window.addEventListener("mousedown", reset);
+		window.addEventListener("keydown", reset);
 	}
 	else {
 		mino = core.rndMino();
