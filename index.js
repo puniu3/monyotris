@@ -1,11 +1,16 @@
-import draw from "/draw.js";
-import core from "/core.js";
-import noise from "/noise.js";
+import core from "./core.js";
+import draw from "./draw.js";
+import noise from "./noise.js";
 
 let mtx, mino, score, totalMinos, running, tickHandler;
 
 window.addEventListener("keydown", onKeydown);
 window.addEventListener("load", reset);
+window.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
+document.querySelector("#down").addEventListener("touchstart", () => handleInput("d"));
+document.querySelector("#up").addEventListener("touchstart", () => handleInput("u"));
+document.querySelector("#left").addEventListener("touchstart", () => handleInput("l"));
+document.querySelector("#right").addEventListener("touchstart", () => handleInput("r"));
 document.querySelector("#down").addEventListener("mousedown", () => handleInput("d"));
 document.querySelector("#up").addEventListener("mousedown", () => handleInput("u"));
 document.querySelector("#left").addEventListener("mousedown", () => handleInput("l"));

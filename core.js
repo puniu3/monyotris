@@ -1,4 +1,4 @@
-import MINOS from "/minos.js"
+import MINOS from "./minos.js"
 
 const HIDDEN_ROWS = 2;
 const ROWS = 20 + HIDDEN_ROWS;
