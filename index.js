@@ -5,6 +5,7 @@ import noise from "/noise.js";
 let mtx = core.blank();
 let mino = core.rndMino();
 let score = 0;
+let totalMinos = 0;
 let running = true;
 
 const scoreLabel = document.querySelector("#score");
@@ -54,8 +55,10 @@ function land() {
 	}
 	if (core.isDead(mtx))
 		running = false;
-	else
+	else {
 		mino = core.rndMino();
+		++totalMinos;
+	}
 }
 
 function fall() {
@@ -70,5 +73,10 @@ function tick() {
 	if (!running) return;
 	drop();
 	update();
-	setTimeout(tick, 1000);
+	setTimeout(tick, interval(totalMinos));
+}
+
+function interval(progress) {
+	const level = Math.floor(progress / 15);
+	return [1500, 1300, 1100, 900, 800, 700, 600, 550][level] || 500;
 }
