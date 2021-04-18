@@ -2,7 +2,7 @@ import draw from "/draw.js";
 import core from "/core.js";
 import noise from "/noise.js";
 
-let mtx, mino, score, totalMinos, running;
+let mtx, mino, score, totalMinos, running, tickHandler;
 
 window.addEventListener("keydown", onKeydown);
 window.addEventListener("load", reset);
@@ -18,7 +18,8 @@ function reset() {
 	score = 0;
 	totalMinos = 0;
 	running = true;
-	tick();
+	clearInterval(tickHandler);
+	tickHandler = tick();
 }
 
 function update() { draw(core.turncate(core.lap(mtx, mino) || mtx), score); }
@@ -88,7 +89,7 @@ function tick() {
 	if (!running) return;
 	drop();
 	update();
-	setTimeout(tick, interval(totalMinos));
+	tickHandler = setTimeout(tick, interval(totalMinos));
 }
 
 function interval(progress) {
