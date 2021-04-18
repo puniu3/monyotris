@@ -1,15 +1,22 @@
 body {
 	margin: 0;
-	background: black;
-	font-family:  monospace;
+	font-family: monospace;
 }
 
 canvas {
 	height: 90vh;
 }
 
+.container{
+	background:black;
+	width:fit-content;
+}
+
 .btn-container {
+	width: 45vh;
 	display: flex;
+	justify-content:space-around;
+	padding-bottom: 1vh;
 }
 
 .btn {
@@ -17,7 +24,7 @@ canvas {
 	height: 8vh;
 	background-color: whitesmoke;
 	box-shadow: whitesmoke 0 0 0.3vh;
-	margin-left: 2.6vh;
+	color: #999;
 	box-sizing: border-box;
 	border-radius: 100%;
 	display: flex;
@@ -25,7 +32,6 @@ canvas {
 	justify-content: center;
 	font-size: 5vh;
 	user-select: none;
-	color: #999
 }
 
 #left{

@@ -61,7 +61,7 @@ function land() {
 	({ mtx, lines } = core.clear(mtx));
 	if (lines) {
 		score += lines ** 2 * 100;
-		noise(600, 2);
+		noise(200, 3);
 	} else {
 		noise();
 	}

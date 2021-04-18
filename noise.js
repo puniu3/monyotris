@@ -22,5 +22,7 @@ export default function noise(pitch = 300.0, length = 1.0) {
 
 	noise.connect(filter).connect(gain).connect(atx.destination);
 	noise.start();
+
+	gain.gain.setValueAtTime(1, atx.currentTime);
 	gain.gain.exponentialRampToValueAtTime(0.000000001, atx.currentTime + length);
 }
