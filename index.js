@@ -1,5 +1,6 @@
-import draw from "/draw.js"
+import draw from "/draw.js";
 import core from "/core.js";
+import noise from "/noise.js";
 
 let mtx = core.blank();
 let mino = core.rndMino();
@@ -44,9 +45,13 @@ function land() {
 
 	let lines;
 	({ mtx, lines } = core.clear(mtx));
-	score += lines ** 2 * 100;
-	scoreLabel.innerHTML = score;
-
+	if (lines) {
+		score += lines ** 2 * 100;
+		scoreLabel.innerHTML = score;
+		noise(600, 2);
+	} else {
+		noise();
+	}
 	if (core.isDead(mtx))
 		running = false;
 	else
