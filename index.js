@@ -10,28 +10,37 @@ let running = true;
 
 window.addEventListener("keydown", onKeydown);
 window.addEventListener("load", tick);
+document.querySelector("#down").addEventListener("mousedown", () => handleInput("d"));
+document.querySelector("#up").addEventListener("mousedown", () => handleInput("u"));
+document.querySelector("#left").addEventListener("mousedown", () => handleInput("l"));
+document.querySelector("#right").addEventListener("mousedown", () => handleInput("r"));
 
 function update() { draw(core.turncate(core.lap(mtx, mino) || mtx), score); }
 
 function onKeydown(e) {
-	if (!e.key.includes("Arrow")) return;
+	if (e.key === "ArrowDown") handleInput("d");
+	else if (e.key === "ArrowUp") handleInput("u");
+	else if (e.key === "ArrowLeft") handleInput("l");
+	else if (e.key === "ArrowRight") handleInput("r");
+	else return;
+
 	e.preventDefault();
+}
+
+function handleInput(dir) {
 	if (!running) return;
 
-	if (e.key === "ArrowDown")
-		fall();
-
-	else if (e.key === "ArrowUp")
-		mino = core.rot(mtx, mino) || mino;
-
-	else if (e.key === "ArrowLeft")
-		mino = core.left(mtx, mino) || mino;
-
-	else if (e.key === "ArrowRight")
-		mino = core.right(mtx, mino) || mino;
+	if (dir === "d") fall();
+	else if (dir === "u") rotate();
+	else if (dir === "l") moveLeft();
+	else if (dir === "r") moveRight();
 
 	update();
 }
+
+function rotate() { mino = core.rot(mtx, mino) || mino; }
+function moveLeft() { mino = core.left(mtx, mino) || mino; }
+function moveRight() { mino = core.right(mtx, mino) || mino; }
 
 function drop() {
 	const dropped = core.down(mtx, mino);

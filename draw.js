@@ -17,7 +17,7 @@ const draw = (mtx, score = 0) => {
 	});
 	if (score === 0) return;
 	ctx.fillStyle = "white";
-	ctx.font = "40px monospace";
+	ctx.font = "40px 'Courier New', Courier, monospace";
 	ctx.textAlign = "right";
 	ctx.fillText(score, 480, 50);
 };

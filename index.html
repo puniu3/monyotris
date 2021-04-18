@@ -8,16 +8,41 @@
 	<style>
 		body {
 			margin: 0;
+			background: black;
 		}
 
 		canvas {
 			height: 90vh;
+		}
+
+		.btn-container {
+			display: flex;
+		}
+
+		.btn {
+			width: 8vh;
+			height: 8vh;
+			background-color: whitesmoke;
+			box-shadow: whitesmoke 0 0 0.5vh;
+			margin-left: 2.6vh;
+			border-radius: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 5vh;
+			user-select: none;
 		}
 	</style>
 </head>
 
 <body>
 	<canvas></canvas>
+	<div class="btn-container">
+		<div id="left" class="btn"></div>
+		<div id="up" class="btn"></div>
+		<div id="right" class="btn"></div>
+		<div id="down" class="btn"></div>
+	</div>
 	<script type="module" src="index.js"></script>
 </body>
 
