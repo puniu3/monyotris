@@ -1,5 +1,3 @@
-// window.addEventListener("keydown", () => noise());
-
 const atx = new (window.AudioContext || window.webkitAudioContext)();
 
 const noiseBuffer = (seed => {

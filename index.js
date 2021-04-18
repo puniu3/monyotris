@@ -8,12 +8,10 @@ let score = 0;
 let totalMinos = 0;
 let running = true;
 
-const scoreLabel = document.querySelector("#score");
-
 window.addEventListener("keydown", onKeydown);
 window.addEventListener("load", tick);
 
-function update() { draw(core.turncate(core.lap(mtx, mino) || mtx)); }
+function update() { draw(core.turncate(core.lap(mtx, mino) || mtx), score); }
 
 function onKeydown(e) {
 	if (!e.key.includes("Arrow")) return;
@@ -48,11 +46,11 @@ function land() {
 	({ mtx, lines } = core.clear(mtx));
 	if (lines) {
 		score += lines ** 2 * 100;
-		scoreLabel.innerHTML = score;
 		noise(600, 2);
 	} else {
 		noise();
 	}
+
 	if (core.isDead(mtx))
 		running = false;
 	else {
